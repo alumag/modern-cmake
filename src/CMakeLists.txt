@@ -10,3 +10,16 @@ target_include_directories(Fact
 	    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
 )
 target_link_libraries(Fact spdlog::spdlog)
+
+find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
+if (ENABLE_CPPCHECK AND CMAKE_CXX_CPPCHECK)
+    list(
+        APPEND CMAKE_CXX_CPPCHECK 
+            "--enable=warning"
+            "--inconclusive"
+            "--force" 
+            "--inline-suppr"
+            "--suppressions-list=${CMAKE_SOURCE_DIR}/CppCheckSuppressions.txt"
+    )
+
+endif()
