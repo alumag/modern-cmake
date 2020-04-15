@@ -1,0 +1,8 @@
+get_filename_component(FACT_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+set(FACT_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+if(NOT TARGET fact AND NOT Fact_BINARY_DIR)
+	include("${FACT_CMAKE_DIR}/FactTargets.cmake")
+endif()
+
+set(FACT_LIBRARIES Fact)

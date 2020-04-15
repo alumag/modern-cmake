@@ -23,3 +23,17 @@ if (ENABLE_CPPCHECK AND CMAKE_CXX_CPPCHECK)
     )
 
 endif()
+
+export(TARGETS fact
+	FILE "${PROJECT_BINARY_DIR}/FactTargets.cmake"
+	NAMESPACE Fact::
+)
+
+export(PACKAGE Fact)
+
+install(
+	FILES "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/FactConfig.cmake"
+	DESTINATION "${INSTALL_CMAKE_DIR}"
+)
+
+install(EXPORT FactTargets DESTINATION "${INSTALL_CMAKE_DIR}")
