@@ -24,7 +24,7 @@ if (ENABLE_CPPCHECK AND CMAKE_CXX_CPPCHECK)
 
 endif()
 
-export(TARGETS fact
+export(TARGETS Fact
 	FILE "${PROJECT_BINARY_DIR}/FactTargets.cmake"
 	NAMESPACE Fact::
 )
@@ -33,7 +33,7 @@ export(PACKAGE Fact)
 
 install(
 	FILES "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/FactConfig.cmake"
-	DESTINATION "${INSTALL_CMAKE_DIR}"
+	DESTINATION "${LIB_INSTALL_DIR}/Fact/cmake"
 )
 
-install(EXPORT FactTargets DESTINATION "${INSTALL_CMAKE_DIR}")
+install(TARGETS Fact DESTINATION "${LIB_INSTALL_DIR}/Fact/cmake")
