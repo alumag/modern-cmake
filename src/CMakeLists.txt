@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
 include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
 find_package(spdlog REQUIRED)
 
@@ -24,16 +25,30 @@ if (ENABLE_CPPCHECK AND CMAKE_CXX_CPPCHECK)
 
 endif()
 
+configure_package_config_file(
+	${PROJECT_SOURCE_DIR}/cmake/FactConfig.cmake.in
+	${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
+	INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/Fact/cmake
+)
+
+write_basic_package_version_file(
+	${CMAKE_CURRENT_BINARY_DIR}/FactConfigVersion.cmake
+	VERSION ${PROJECT_VERSION}
+	COMPATIBILITY SameMajorVersion
+)
+
+install(
+	FILES ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
+		  ${CMAKE_CURRENT_BINARY_DIR}/FactConfigVersion.cmake
+		  ${CMAKE_BINARY_DIR}/FactTargets.cmake
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/Fact/cmake
+)
+
+install(TARGETS Fact DESTINATION "${CMAKE_INSTALL_LIBDIR}/Fact/cmake")
+
 export(TARGETS Fact
 	FILE "${PROJECT_BINARY_DIR}/FactTargets.cmake"
 	NAMESPACE Fact::
 )
 
 export(PACKAGE Fact)
-
-install(
-	FILES "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/FactConfig.cmake"
-	DESTINATION "${LIB_INSTALL_DIR}/Fact/cmake"
-)
-
-install(TARGETS Fact DESTINATION "${LIB_INSTALL_DIR}/Fact/cmake")
