@@ -38,9 +38,10 @@ write_basic_package_version_file(
 )
 
 install(
-	FILES ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
-		  ${CMAKE_CURRENT_BINARY_DIR}/FactConfigVersion.cmake
-		  ${CMAKE_BINARY_DIR}/FactTargets.cmake
+	FILES
+		${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
+		${CMAKE_CURRENT_BINARY_DIR}/FactConfigVersion.cmake
+		${CMAKE_BINARY_DIR}/FactTargets.cmake
 	DESTINATION ${CMAKE_INSTALL_LIBDIR}/Fact/cmake
 )
 
