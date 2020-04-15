@@ -1,5 +1,9 @@
 get_filename_component(FACT_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+include(CMakeFindDependencyMacro)
+
 set(FACT_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+find_dependency(spdlog REQUIRED)
 
 if(NOT TARGET fact AND NOT Fact_BINARY_DIR)
 	include("${FACT_CMAKE_DIR}/FactTargets.cmake")
