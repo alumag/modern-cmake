@@ -15,8 +15,8 @@ target_link_libraries(Fact spdlog::spdlog)
 if (ENABLE_CPPCHECK)
     find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck REQUIRED)
     list(
-        APPEND CMAKE_CXX_CPPCHECK 
-            "--enable=warning"
+        APPEND CMAKE_CXX_CPPCHECK
+            "--enable=all"
             "--inconclusive"
             "--force" 
             "--inline-suppr"
