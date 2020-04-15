@@ -12,8 +12,8 @@ target_include_directories(Fact
 )
 target_link_libraries(Fact spdlog::spdlog)
 
-find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
-if (ENABLE_CPPCHECK AND CMAKE_CXX_CPPCHECK)
+if (ENABLE_CPPCHECK)
+    find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck REQUIRED)
     list(
         APPEND CMAKE_CXX_CPPCHECK 
             "--enable=warning"
@@ -45,7 +45,9 @@ install(
 	DESTINATION ${CMAKE_INSTALL_LIBDIR}/Fact/cmake
 )
 
-install(TARGETS Fact DESTINATION "${CMAKE_INSTALL_LIBDIR}/Fact/cmake")
+install(TARGETS Fact
+			DESTINATION "${CMAKE_INSTALL_LIBDIR}/Fact/cmake"
+)
 
 export(TARGETS Fact
 	FILE "${PROJECT_BINARY_DIR}/FactTargets.cmake"
