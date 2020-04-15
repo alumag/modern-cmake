@@ -8,6 +8,6 @@ option(ENABLE_TESTING "Build test programs" ON)
 add_subdirectory(src)
 
 if(ENABLE_TESTING)
-  enable_testing()
-  add_subdirectory(test)
+    enable_testing()
+    add_subdirectory(test)
 endif()
