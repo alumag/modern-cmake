@@ -4,7 +4,7 @@ include(CMakePackageConfigHelpers)
 
 find_package(spdlog REQUIRED)
 
-add_library(Fact SHARED fact.cpp)
+add_library(Fact fact.cpp)
 target_include_directories(Fact
     PUBLIC
         $<INSTALL_INTERFACE:include>
