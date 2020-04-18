@@ -8,5 +8,3 @@ find_dependency(spdlog REQUIRED)
 if(NOT TARGET Fact AND NOT Fact_BINARY_DIR)
 	include("${FACT_CMAKE_DIR}/FactTargets.cmake")
 endif()
-
-set(FACT_LIBRARIES Fact)
