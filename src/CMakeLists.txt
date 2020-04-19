@@ -34,16 +34,16 @@ install(TARGETS Fact
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+    DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
 install(EXPORT fact-export
     FILE
         FactTargets.cmake
     NAMESPACE
         Fact::
-    DESTINATION
-        ${FACT_INSTALL_DIR}
-)
-
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include
     DESTINATION
         ${FACT_INSTALL_DIR}
 )
@@ -67,8 +67,9 @@ install(FILES
         ${FACT_INSTALL_DIR}
 )
 
-export(TARGETS Fact
-    FILE ${PROJECT_BINARY_DIR}/FactTargets.cmake
+export(EXPORT fact-export
+    FILE
+        ${PROJECT_BINARY_DIR}/FactTargets.cmake
     NAMESPACE Fact::
 )
 
