@@ -41,6 +41,10 @@ install(EXPORT fact-export
         ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
 )
 
+install(DIRECTORY {CMAKE_SOURCE_DIR}/include/
+    DESTINATION
+        ${CMAKE_INSTALL_LIBDIR}/cmake/Fact)
+
 configure_package_config_file(
     ${PROJECT_SOURCE_DIR}/cmake/FactConfig.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
@@ -53,8 +57,15 @@ write_basic_package_version_file(
     COMPATIBILITY SameMajorVersion
 )
 
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/FactConfigVersion.cmake
+    DESTINATION
+        ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
+)
+
 export(TARGETS Fact
-    FILE "${PROJECT_BINARY_DIR}/FactTargets.cmake"
+    FILE ${PROJECT_BINARY_DIR}/FactTargets.cmake
     NAMESPACE Fact::
 )
 
