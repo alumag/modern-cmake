@@ -41,7 +41,7 @@ install(EXPORT fact-export
         ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
 )
 
-install(DIRECTORY {CMAKE_SOURCE_DIR}/include/
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include
     DESTINATION
         ${CMAKE_INSTALL_LIBDIR}/cmake/Fact)
 
