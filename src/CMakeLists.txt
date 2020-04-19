@@ -39,12 +39,12 @@ install(EXPORT fact-export
         Fact::
     DESTINATION
         ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
-    )
+)
 
 configure_package_config_file(
     ${PROJECT_SOURCE_DIR}/cmake/FactConfig.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/Fact/cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
 )
 
 write_basic_package_version_file(
