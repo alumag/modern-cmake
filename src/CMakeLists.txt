@@ -26,6 +26,8 @@ endif()
 
 
 # Install
+set(FACT_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/Fact)
+
 install(TARGETS Fact
     EXPORT fact-export
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -38,17 +40,18 @@ install(EXPORT fact-export
     NAMESPACE
         Fact::
     DESTINATION
-        ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
+        ${FACT_INSTALL_DIR}
 )
 
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include
     DESTINATION
-        ${CMAKE_INSTALL_LIBDIR}/cmake/Fact)
+        ${FACT_INSTALL_DIR}
+)
 
 configure_package_config_file(
     ${PROJECT_SOURCE_DIR}/cmake/FactConfig.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
+    INSTALL_DESTINATION ${FACT_INSTALL_DIR}
 )
 
 write_basic_package_version_file(
@@ -61,7 +64,7 @@ install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
     ${CMAKE_CURRENT_BINARY_DIR}/FactConfigVersion.cmake
     DESTINATION
-        ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
+        ${FACT_INSTALL_DIR}
 )
 
 export(TARGETS Fact
