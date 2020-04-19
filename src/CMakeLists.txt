@@ -24,6 +24,23 @@ if (ENABLE_CPPCHECK)
     )
 endif()
 
+
+# Install
+install(TARGETS Fact
+    EXPORT fact-export
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+install(EXPORT fact-export
+    FILE
+        FactTargets.cmake
+    NAMESPACE
+        Fact::
+    DESTINATION
+        ${CMAKE_INSTALL_LIBDIR}/cmake/Fact
+    )
+
 configure_package_config_file(
     ${PROJECT_SOURCE_DIR}/cmake/FactConfig.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
@@ -34,18 +51,6 @@ write_basic_package_version_file(
     ${CMAKE_CURRENT_BINARY_DIR}/FactConfigVersion.cmake
     VERSION ${PROJECT_VERSION}
     COMPATIBILITY SameMajorVersion
-)
-
-install(
-    FILES
-        ${CMAKE_CURRENT_BINARY_DIR}/FactConfig.cmake
-        ${CMAKE_CURRENT_BINARY_DIR}/FactConfigVersion.cmake
-        ${CMAKE_BINARY_DIR}/FactTargets.cmake
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/Fact/cmake
-)
-
-install(TARGETS Fact
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/Fact/cmake"
 )
 
 export(TARGETS Fact
